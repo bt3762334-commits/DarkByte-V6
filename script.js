@@ -151,3 +151,20 @@ certImgs.forEach(img => {
 lightbox.addEventListener("click", () => {
   lightbox.classList.remove("show");
 });
+emailjs.init("YOUR_PUBLIC_KEY");
+
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  emailjs.sendForm(
+    "YOUR_SERVICE_ID",
+    "YOUR_TEMPLATE_ID",
+    this
+  ).then(() => {
+    alert("Message sent successfully 🚀");
+    this.reset();
+  }).catch((error) => {
+    alert("Failed to send message ❌");
+    console.log(error);
+  });
+});
