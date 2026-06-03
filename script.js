@@ -45,3 +45,35 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+document.querySelectorAll(".project-card").forEach(card => {
+
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const xPercent = (x / rect.width) * 100;
+    const yPercent = (y / rect.height) * 100;
+
+    // glow position
+    card.style.setProperty("--x", `${xPercent}%`);
+    card.style.setProperty("--y", `${yPercent}%`);
+
+    // 3D tilt
+    const rotateX = ((y / rect.height) - 0.5) * -15;
+    const rotateY = ((x / rect.width) - 0.5) * 15;
+
+    card.style.transform = `
+      perspective(1000px)
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+      scale(1.05)
+    `;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "perspective(1000px) rotateX(0) rotateY(0) scale(1)";
+  });
+
+});
