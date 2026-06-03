@@ -27,3 +27,21 @@ window.onload = () => {
 
   }, 2500); // مدة الانيميشن
 };
+
+// SCROLL REVEAL FOR PROJECTS
+const cards = document.querySelectorAll(".project-card");
+
+window.addEventListener("scroll", () => {
+  cards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+
+    if (rect.top < window.innerHeight - 100) {
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+      card.style.transition = "0.6s ease";
+    } else {
+      card.style.opacity = "0";
+      card.style.transform = "translateY(30px)";
+    }
+  });
+});
