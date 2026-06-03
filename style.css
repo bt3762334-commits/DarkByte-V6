@@ -488,3 +488,20 @@ body {
     padding: 0 20px;
   }
 }
+.whatsapp-btn {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #25D366;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+}
