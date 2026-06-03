@@ -96,12 +96,27 @@ body {
   padding: 25px;
   border-radius: 15px;
   backdrop-filter: blur(10px);
-  transition: 0.4s ease;
+
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
   cursor: pointer;
 
-  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  transform-style: preserve-3d;
 }
 
+/* glow layer effect */
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(108,99,255,0.25), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 15px;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
 /* HOVER EFFECT */
 .project-card:hover {
   transform: translateY(-10px) scale(1.03);
