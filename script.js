@@ -89,3 +89,20 @@ document.querySelectorAll(".nav-links a").forEach(link => {
     });
   });
 });
+// CONTACT FORM (demo behavior)
+document.querySelector(".contact-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const btn = e.target.querySelector("button");
+  btn.innerText = "Sending...";
+
+  setTimeout(() => {
+    btn.innerText = "Message Sent ✔";
+
+    setTimeout(() => {
+      btn.innerText = "Send Message";
+      e.target.reset();
+    }, 1500);
+
+  }, 1000);
+});
