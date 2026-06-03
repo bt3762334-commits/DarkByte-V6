@@ -137,3 +137,17 @@ window.addEventListener("mousemove", (e) => {
   cursor.style.left = e.clientX + "px";
   cursor.style.top = e.clientY + "px";
 });
+const certImgs = document.querySelectorAll(".cert-img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+certImgs.forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.classList.add("show");
+    lightboxImg.src = img.src;
+  });
+});
+
+lightbox.addEventListener("click", () => {
+  lightbox.classList.remove("show");
+});
