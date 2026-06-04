@@ -12,6 +12,9 @@
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -47,11 +50,9 @@
 
   <!-- PROJECTS -->
   <section class="projects" id="projects">
-
     <h2 class="section-title">My Projects</h2>
 
     <div class="projects-grid">
-
       <div class="project-card">
         <h3>DarkByte</h3>
         <p>Modern Portfolio Website</p>
@@ -66,24 +67,18 @@
         <h3>Todos App</h3>
         <p>JavaScript Task Manager</p>
       </div>
-
     </div>
-
   </section>
 
   <!-- CERTIFICATES -->
   <section class="certificates" id="certificates">
-
     <h2 class="section-title">Certificates</h2>
 
     <div class="cert-grid">
-
       <img src="photo2.jpeg" class="cert-img" alt="certificate">
       <img src="photo3.jpeg" class="cert-img" alt="certificate">
       <img src="photo4.jpeg" class="cert-img" alt="certificate">
-
     </div>
-
   </section>
 
   <!-- LIGHTBOX -->
@@ -93,54 +88,49 @@
 
   <!-- ABOUT -->
   <section class="about" id="about">
-
     <h2 class="section-title">About Me</h2>
 
     <div class="about-box">
-
       <img src="photo5.jpeg" class="profile-img"/>
 
       <div class="about-text">
         <h3>Basem Taha</h3>
-        <p>
-          Front-End Developer passionate about cinematic UI.
-        </p>
+        <p>Front-End Developer passionate about cinematic UI.</p>
 
         <div class="socials">
           <a href="https://wa.me/201091291823">WhatsApp</a>
           <a href="https://facebook.com">Facebook</a>
           <a href="https://instagram.com">Instagram</a>
         </div>
-
       </div>
-
     </div>
-
   </section>
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
-
     <h2 class="section-title">Contact Me</h2>
 
     <div class="contact-box">
-
       <p class="contact-text">
         Got a project or opportunity? Let's work together 🚀
       </p>
 
-      <form class="contact-form">
+      <form class="contact-form" id="contact-form">
 
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" required></textarea>
+        <input type="text" name="from_name" placeholder="Your Name" required>
+        <input type="email" name="reply_to" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
 
-        <button type="submit">Send Message</button>
+        <button type="submit">📩 Send via Email</button>
+
+        <a class="whatsapp-btn"
+           href="https://wa.me/201091291823?text=Hello%20I%20want%20to%20contact%20you"
+           target="_blank">
+           💬 Chat on WhatsApp
+        </a>
 
       </form>
-
     </div>
-
   </section>
 
 </div>
@@ -149,7 +139,7 @@
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="script.js"></script>
 
-<!-- CERT LIGHTBOX SCRIPT -->
+<!-- LIGHTBOX SCRIPT -->
 <script>
   const certImgs = document.querySelectorAll(".cert-img");
   const lightbox = document.getElementById("lightbox");
@@ -164,6 +154,27 @@
 
   lightbox.addEventListener("click", () => {
     lightbox.classList.remove("show");
+  });
+</script>
+
+<!-- EMAILJS SCRIPT -->
+<script>
+  emailjs.init("FTRlgbY1YWVZ02k0c");
+
+  document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "service_svr70wd",
+      "template_bk0jzfz",
+      this
+    ).then(() => {
+      alert("Message sent successfully 🚀");
+      this.reset();
+    }).catch((error) => {
+      alert("Failed to send message ❌");
+      console.log(error);
+    });
   });
 </script>
 
