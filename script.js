@@ -151,14 +151,14 @@ certImgs.forEach(img => {
 lightbox.addEventListener("click", () => {
   lightbox.classList.remove("show");
 });
-emailjs.init("YOUR_PUBLIC_KEY");
+emailjs.init("FTRlgbY1YWVZ02k0c");
 
 document.getElementById("contact-form").addEventListener("submit", function(e) {
   e.preventDefault();
 
   emailjs.sendForm(
-    "YOUR_SERVICE_ID",
-    "YOUR_TEMPLATE_ID",
+    "service_svr70wd",
+    "template_bk0jzfz",
     this
   ).then(() => {
     alert("Message sent successfully 🚀");
